@@ -1,4 +1,4 @@
-package janggi_master.core;
+package janggi.master.core;
 
 public enum Camp {
     CHO, HAN;

@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e5b5c5a6-4f7e-4b06-aafa-98e91a87e082" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/janggi_master/core/Formation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/janggi/master/core/Move.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/janggi_master/core/Camp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/janggi_master/core/Camp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/janggi_master/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/janggi/master/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/janggi_master/core/Camp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/janggi/master/core/Camp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/janggi_master/core/Formation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/janggi/master/core/Formation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/janggi_master/core/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/janggi/master/core/Grid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/janggi_master/core/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/janggi/master/core/Piece.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -24,25 +27,34 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/janggi_master/core/Grid.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/janggi/master/core/Grid.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="1" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+            <state>
+              <caret column="27" lean-forward="true" selection-start-column="27" selection-end-column="27" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/janggi_master/core/Piece.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/janggi/master/core/Move.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="62" selection-start-line="3" selection-start-column="62" selection-end-line="3" selection-end-column="62" />
+            <state relative-caret-position="75">
+              <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/janggi_master/core/Camp.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/janggi/master/core/Piece.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/janggi/master/core/Camp.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="45">
               <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
@@ -51,19 +63,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/janggi_master/core/Formation.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/janggi/master/core/Formation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="45" selection-start-line="3" selection-start-column="45" selection-end-line="3" selection-end-column="45" />
+            <state>
+              <caret selection-end-column="27" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/janggi_master/Main.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/janggi/master/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
+            <state>
+              <caret selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -81,8 +93,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -94,11 +106,15 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/Grid.java" />
         <option value="$PROJECT_DIR$/src/main/java/core/Grid.java" />
-        <option value="$PROJECT_DIR$/src/main/java/janggi_master/core/Grid.java" />
-        <option value="$PROJECT_DIR$/src/main/java/janggi_master/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/janggi_master/core/Piece.java" />
         <option value="$PROJECT_DIR$/src/main/java/janggi_master/core/Formation.java" />
         <option value="$PROJECT_DIR$/src/main/java/janggi_master/core/Camp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/janggi_master/core/Move.java" />
+        <option value="$PROJECT_DIR$/src/main/java/janggi_master/core/Grid.java" />
+        <option value="$PROJECT_DIR$/src/main/java/janggi_master/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/janggi/master/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/janggi/master/core/Move.java" />
+        <option value="$PROJECT_DIR$/src/main/java/janggi/master/core/Piece.java" />
       </list>
     </option>
   </component>
@@ -144,23 +160,6 @@
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="JanggiMaster" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Janggi Master" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="janggi_master" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JanggiMaster" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Janggi Master" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="janggi_master" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -169,7 +168,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1579387878788" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1579388140869" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -245,44 +244,51 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/Grid" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/janggi_master/core/Grid.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="1" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/janggi_master/core/Piece.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="62" selection-start-line="3" selection-start-column="62" selection-end-line="3" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gibo/1/아마고수기보001.gib">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/janggi_master/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/janggi/master/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        <state>
+          <caret selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/janggi_master/core/Formation.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/janggi/master/core/Formation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="45" selection-start-line="3" selection-start-column="45" selection-end-line="3" selection-end-column="45" />
+        <state>
+          <caret selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/janggi_master/core/Camp.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/janggi/master/core/Camp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/janggi/master/core/Grid.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="27" lean-forward="true" selection-start-column="27" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/janggi/master/core/Move.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/janggi/master/core/Piece.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
         </state>
       </provider>
     </entry>

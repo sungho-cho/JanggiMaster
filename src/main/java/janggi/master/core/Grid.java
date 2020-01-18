@@ -1,4 +1,4 @@
-package core;
+package janggi.master.core;
 
 /**
  * Grid class that represents each interception on 9x10 Janggi board
