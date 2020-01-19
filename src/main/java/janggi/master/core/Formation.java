@@ -9,19 +9,22 @@ public enum Formation {
     private Table<Character, Integer, Piece> initialBoard() {
         Table<Character, Integer, Piece> board = HashBasedTable.create();
 
-        board.put('A', 4, Piece.SOLDIER);
-        board.put('C', 4, Piece.SOLDIER);
-        board.put('E', 4, Piece.SOLDIER);
-        board.put('G', 4, Piece.SOLDIER);
-        board.put('I', 4, Piece.SOLDIER);
+        board.put('A', 4, new Piece(PieceType.SOLDIER));
+        board.put('C', 4, new Piece(PieceType.SOLDIER));
+        board.put('E', 4, new Piece(PieceType.SOLDIER));
+        board.put('G', 4, new Piece(PieceType.SOLDIER));
+        board.put('I', 4, new Piece(PieceType.SOLDIER));
 
-        board.put('B', 3, Piece.CANNON);
-        board.put('H', 3, Piece.CANNON);
+        board.put('B', 3, new Piece(PieceType.CANNON));
+        board.put('H', 3, new Piece(PieceType.CANNON));
 
-        board.put('E', 3, Piece.GENERAL);
+        board.put('E', 3, new Piece(PieceType.GENERAL));
 
-        board.put('A', 1, Piece.CHARIOT);
-        board.put('I', 1, Piece.CHARIOT);
+        board.put('D', 1, new Piece(PieceType.GUARD));
+        board.put('F', 1, new Piece(PieceType.GUARD));
+
+        board.put('A', 1, new Piece(PieceType.CHARIOT));
+        board.put('I', 1, new Piece(PieceType.CHARIOT));
 
         return board;
     }
@@ -30,31 +33,31 @@ public enum Formation {
         Table<Character, Integer, Piece> board = initialBoard();
         switch (Formation.values()[this.ordinal()]) {
             case YANGGWIMA:
-                board.put('B', 1, Piece.ELEPHANT);
-                board.put('C', 1, Piece.HORSE);
-                board.put('G', 1, Piece.HORSE);
-                board.put('H', 1, Piece.ELEPHANT);
+                board.put('B', 1, new Piece(PieceType.ELEPHANT));
+                board.put('C', 1, new Piece(PieceType.HORSE));
+                board.put('G', 1, new Piece(PieceType.HORSE));
+                board.put('H', 1, new Piece(PieceType.ELEPHANT));
                 break;
 
             case GWIMASANG:
-                board.put('B', 1, Piece.ELEPHANT);
-                board.put('C', 1, Piece.HORSE);
-                board.put('G', 1, Piece.ELEPHANT);
-                board.put('H', 1, Piece.HORSE);
+                board.put('B', 1, new Piece(PieceType.ELEPHANT));
+                board.put('C', 1, new Piece(PieceType.HORSE));
+                board.put('G', 1, new Piece(PieceType.ELEPHANT));
+                board.put('H', 1, new Piece(PieceType.HORSE));
                 break;
 
             case GWIMAMA:
-                board.put('B', 1, Piece.HORSE);
-                board.put('C', 1, Piece.ELEPHANT);
-                board.put('G', 1, Piece.HORSE);
-                board.put('H', 1, Piece.ELEPHANT);
+                board.put('B', 1, new Piece(PieceType.HORSE));
+                board.put('C', 1, new Piece(PieceType.ELEPHANT));
+                board.put('G', 1, new Piece(PieceType.HORSE));
+                board.put('H', 1, new Piece(PieceType.ELEPHANT));
                 break;
 
             case WONWANGMA:
-                board.put('B', 1, Piece.HORSE);
-                board.put('C', 1, Piece.ELEPHANT);
-                board.put('G', 1, Piece.ELEPHANT);
-                board.put('H', 1, Piece.HORSE);
+                board.put('B', 1, new Piece(PieceType.HORSE));
+                board.put('C', 1, new Piece(PieceType.ELEPHANT));
+                board.put('G', 1, new Piece(PieceType.ELEPHANT));
+                board.put('H', 1, new Piece(PieceType.HORSE));
                 break;
         }
         return board;
