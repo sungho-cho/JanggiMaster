@@ -55,7 +55,18 @@ public class Board {
         }
 
         switch (piece.getPieceType()) {
-            case
+            case GENERAL:
+            case GUARD:
+            case SOLDIER:
+                break;
+
+            case HORSE:
+            case ELEPHANT:
+                break;
+
+            case CHARIOT:
+            case CANNON:
+                break;
         }
     }
 
