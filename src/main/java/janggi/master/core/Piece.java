@@ -25,27 +25,27 @@ public class Piece {
     public List<List<Pair<Integer, Integer>>> getPossibleMoves() {
         List<List<Pair<Integer, Integer>>> possibleMoves = new ArrayList<>();
         switch (this.pieceType) {
-            case GENERAL:
-            case GUARD:
-                possibleMoves.add(new ArrayList<>(Arrays.asList(new Pair<>(-1, -1))));
-                possibleMoves.add(new ArrayList<>(Arrays.asList(new Pair<>(-1,  0))));
-                possibleMoves.add(new ArrayList<>(Arrays.asList(new Pair<>(-1,  1))));
-                possibleMoves.add(new ArrayList<>(Arrays.asList(new Pair<>( 0, -1))));
-                possibleMoves.add(new ArrayList<>(Arrays.asList(new Pair<>( 0,  0))));
-                possibleMoves.add(new ArrayList<>(Arrays.asList(new Pair<>( 0,  1))));
-                possibleMoves.add(new ArrayList<>(Arrays.asList(new Pair<>( 1, -1))));
-                possibleMoves.add(new ArrayList<>(Arrays.asList(new Pair<>( 1,  0))));
-                possibleMoves.add(new ArrayList<>(Arrays.asList(new Pair<>( 1,  1))));
-                break;
+//            case GENERAL:
+//            case GUARD:
+//                possibleMoves.add(new ArrayList<>(Arrays.asList(new Pair<>(-1, -1)))); // Diagonal
+//                possibleMoves.add(new ArrayList<>(Arrays.asList(new Pair<>(-1,  0))));
+//                possibleMoves.add(new ArrayList<>(Arrays.asList(new Pair<>(-1,  1)))); // Diagonal
+//                possibleMoves.add(new ArrayList<>(Arrays.asList(new Pair<>( 0, -1))));
+//                possibleMoves.add(new ArrayList<>(Arrays.asList(new Pair<>( 0,  0))));
+//                possibleMoves.add(new ArrayList<>(Arrays.asList(new Pair<>( 0,  1))));
+//                possibleMoves.add(new ArrayList<>(Arrays.asList(new Pair<>( 1, -1)))); // Diagonal
+//                possibleMoves.add(new ArrayList<>(Arrays.asList(new Pair<>( 1,  0))));
+//                possibleMoves.add(new ArrayList<>(Arrays.asList(new Pair<>( 1,  1)))); // Diagonal
+//                break;
 
-            case SOLDIER:
-                possibleMoves.add(new ArrayList<>(Arrays.asList(new Pair<>(-1,  0))));
-                possibleMoves.add(new ArrayList<>(Arrays.asList(new Pair<>(-1,  1))));
-                possibleMoves.add(new ArrayList<>(Arrays.asList(new Pair<>( 0,  0))));
-                possibleMoves.add(new ArrayList<>(Arrays.asList(new Pair<>( 0,  1))));
-                possibleMoves.add(new ArrayList<>(Arrays.asList(new Pair<>( 1,  0))));
-                possibleMoves.add(new ArrayList<>(Arrays.asList(new Pair<>( 1,  1))));
-                break;
+//            case SOLDIER:
+//                possibleMoves.add(new ArrayList<>(Arrays.asList(new Pair<>(-1,  0))));
+//                possibleMoves.add(new ArrayList<>(Arrays.asList(new Pair<>(-1,  1)))); // Diagonal
+//                possibleMoves.add(new ArrayList<>(Arrays.asList(new Pair<>( 0,  0))));
+//                possibleMoves.add(new ArrayList<>(Arrays.asList(new Pair<>( 0,  1))));
+//                possibleMoves.add(new ArrayList<>(Arrays.asList(new Pair<>( 1,  0))));
+//                possibleMoves.add(new ArrayList<>(Arrays.asList(new Pair<>( 1,  1)))); // Diagonal
+//                break;
 
             case HORSE:
                 possibleMoves.add(new ArrayList<>(Arrays.asList(new Pair<>( 0,  1), new Pair<>(-1,  1))));
