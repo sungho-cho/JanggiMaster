@@ -2,7 +2,6 @@ package janggi.master.core;
 
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
-import jdk.internal.net.http.common.Pair;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -91,10 +90,10 @@ public class Board {
                 if (checkOitong) {
                     boolean oitong = true;
                     for (Pair<Piece, Grid> pieceGridPair : getPieces(defender)) {
-                        Piece piece = pieceGridPair.first;
-                        Grid from = pieceGridPair.second;
+                        Piece piece = pieceGridPair.first();
+                        Grid from = pieceGridPair.second();
 
-                        for (Grid to : getPieceMoves(piece, pieceGridPair.second)) {
+                        for (Grid to : getPieceMoves(piece, pieceGridPair.second())) {
                             Piece previousPiece = board.get(to.getCol(), to.getRow());
                             board.put(to.getCol(), to.getRow(), piece);
                             board.remove(from.getCol(), from.getRow());
@@ -180,8 +179,8 @@ public class Board {
             boolean outOfRange = false;
             for (int i = 0; i < moves.size(); i++) {
                 Pair<Integer, Integer> move = moves.get(i);
-                col = calcCol(col, move.first);
-                row = row + move.second;
+                col = calcCol(col, move.first());
+                row = row + move.second();
                 if (col < 'A' || col > 'I' || row < 1 || row > 10) {
                     outOfRange = true;
                     break;
@@ -255,6 +254,7 @@ public class Board {
             // Invalidated if moving too far
             if (colAbsDiff + rowAbsDiff != 1) return false;
         }
+        return true;
     }
 
     private boolean validateStraightPieceMove(Piece piece, Grid from, Grid to) {
@@ -323,6 +323,7 @@ public class Board {
                 return validateRowStraightLine(piece, from, to);
             }
         }
+        return true;
     }
 
     private boolean validateColumnStraightLine(Piece piece, Grid from, Grid to) {
@@ -340,9 +341,9 @@ public class Board {
             }
         }
 
-        if (piece.getPieceType() == PieceType.CHARIOT) {
+        if (piece.getPieceType() == PieceType.CHARIOT) { // CHARIOT
             return numBlockages == 0;
-        } else if (piece.getPieceType() == PieceType.CANNON) {
+        } else { // CANNON
             return numBlockages == 1 && !isCannonBlocking;
         }
     }
@@ -362,9 +363,9 @@ public class Board {
             }
         }
 
-        if (piece.getPieceType() == PieceType.CHARIOT) {
+        if (piece.getPieceType() == PieceType.CHARIOT) { // CHARIOT
             return numBlockages == 0;
-        } else if (piece.getPieceType() == PieceType.CANNON) {
+        } else { // CANNON
             return numBlockages == 1 && !isCannonBlocking;
         }
     }
@@ -373,9 +374,9 @@ public class Board {
     private List<Grid> getMoves(Camp camp) {
         List<Grid> grids = new ArrayList<>();
         for (Pair<Piece, Grid> pieceGridPair : getPieces(camp)) {
-            Piece piece = pieceGridPair.first;
-            char c = pieceGridPair.second.getCol();
-            int r = pieceGridPair.second.getRow();
+            Piece piece = pieceGridPair.first();
+            char c = pieceGridPair.second().getCol();
+            int r = pieceGridPair.second().getRow();
             List<Grid> pieceMoves = getPieceMoves(piece, new Grid(c, r));
             grids.addAll(pieceMoves);
         }

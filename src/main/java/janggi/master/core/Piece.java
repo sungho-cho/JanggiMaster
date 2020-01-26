@@ -1,7 +1,5 @@
 package janggi.master.core;
 
-import jdk.internal.net.http.common.Pair;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
