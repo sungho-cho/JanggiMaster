@@ -4,6 +4,7 @@ import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 import jdk.internal.net.http.common.Pair;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static janggi.master.core.Grid.*;
@@ -13,10 +14,12 @@ public class Board {
     private Camp player;
     private Camp turn = Camp.CHO;
     private boolean janggun = false;
+    private Game game;
 
-    public Board(Camp player, Formation choFormation, Formation hanFormation) {
+    public Board(Camp player, Formation choFormation, Formation hanFormation, Game game) {
         this.board = HashBasedTable.create();
         this.player = player;
+        this.game = game;
 
         Table<Character, Integer, Piece> choBoard = choFormation.getBoard();
         Table<Character, Integer, Piece> hanBoard = hanFormation.getBoard();
@@ -37,6 +40,81 @@ public class Board {
 
     }
 
+    public void makeMove(Piece piece, Grid from, Grid to) {
+        // Validate the given move
+        boolean validated = validateMove(piece, from, to);
+
+        // Must be "Munggun" move to defend "Janggun"
+        if (validated && this.janggun) {
+            Piece previousPiece = board.get(to.getCol(), to.getRow());
+            board.put(to.getCol(), to.getRow(), piece);
+            if (checkJanggun(piece.getCamp(), false) == GameStatus.JANGGUN) {
+                board.put(to.getCol(), to.getRow(), previousPiece);
+                validated = false;
+            }
+        }
+
+        if (!validated) {
+            return;
+        }
+
+        // Make the move
+        board.put(to.getCol(), to.getRow(), piece);
+        board.remove(from.getCol(), from.getRow());
+
+
+        // Check if it's a "Janggun" move or "Oitong" move
+        GameStatus status = checkJanggun(piece.getCamp().opponent(), true);
+        if (status == GameStatus.OITONG) {
+            // End game
+            game.endGame();
+        } else if (status == GameStatus.JANGGUN) {
+            this.janggun = true;
+        }
+
+        // Switch "turn" variable
+        this.turn = this.turn.opponent();
+    }
+
+    private GameStatus checkJanggun(Camp defender, boolean checkOitong) {
+        List<Grid> grids = getMoves(defender.opponent());
+        GameStatus status = GameStatus.NORMAL;
+        for (Grid grid : grids) {
+            char c = grid.getCol();
+            int r = grid.getRow();
+
+            // Check if "Janggun" is applicable
+            if (board.contains(c, r) && board.get(c, r).getPieceType() == PieceType.GENERAL) {
+                status = GameStatus.JANGGUN;
+
+                // TO DO: Check Oitong here after temporarily placing the move
+                if (checkOitong) {
+                    boolean oitong = true;
+                    for (Pair<Piece, Grid> pieceGridPair : getPieces(defender)) {
+                        Piece piece = pieceGridPair.first;
+                        Grid from = pieceGridPair.second;
+
+                        for (Grid to : getPieceMoves(piece, pieceGridPair.second)) {
+                            Piece previousPiece = board.get(to.getCol(), to.getRow());
+                            board.put(to.getCol(), to.getRow(), piece);
+                            board.remove(from.getCol(), from.getRow());
+                            if (checkJanggun(defender, false) == GameStatus.NORMAL) {
+                                oitong = false;
+                            }
+                            board.put(to.getCol(), to.getRow(), previousPiece);
+                            board.put(from.getCol(), from.getRow(), piece);
+                        }
+                    }
+                    if (oitong) {
+                        status = GameStatus.OITONG;
+                    }
+                }
+            }
+        }
+        return status;
+    }
+
+    // TO DO: Invalidate if the move puts ally general in danger
     private boolean validateMove(Piece piece, Grid from, Grid to) {
         // Invalidated when "from" or "to" is out of bound
         if (from.getCol() < MIN_COL || from.getCol() > MAX_COL ||
@@ -68,22 +146,29 @@ public class Board {
             return false;
         }
 
+        boolean validated = false;
         switch (piece.getPieceType()) {
             case HORSE:
             case ELEPHANT:
-                return validateJumpyPieceMove(piece, from, to);
+                validated = validateJumpyPieceMove(piece, from, to);
+                break;
 
             case GENERAL:
             case GUARD:
-                return validateCastlePieceMove(piece, from, to);
+                validated = validateCastlePieceMove(piece, from, to);
+                break;
 
             case SOLDIER:
-                return validateSoldierPieceMove(piece, from, to);
+                validated = validateSoldierPieceMove(piece, from, to);
+                break;
 
             case CHARIOT:
             case CANNON:
-                return validateStraightPieceMove(piece, from, to);
+                validated = validateStraightPieceMove(piece, from, to);
+                break;
         }
+
+        return validated;
     }
 
     private boolean validateJumpyPieceMove(Piece piece, Grid from, Grid to) {
@@ -282,6 +367,45 @@ public class Board {
         } else if (piece.getPieceType() == PieceType.CANNON) {
             return numBlockages == 1 && !isCannonBlocking;
         }
+    }
+
+    // Return a list of grids that all pieces of the given camp can move to
+    private List<Grid> getMoves(Camp camp) {
+        List<Grid> grids = new ArrayList<>();
+        for (Pair<Piece, Grid> pieceGridPair : getPieces(camp)) {
+            Piece piece = pieceGridPair.first;
+            char c = pieceGridPair.second.getCol();
+            int r = pieceGridPair.second.getRow();
+            List<Grid> pieceMoves = getPieceMoves(piece, new Grid(c, r));
+            grids.addAll(pieceMoves);
+        }
+        return grids;
+    }
+
+    private List<Pair<Piece, Grid>> getPieces(Camp camp) {
+        List<Pair<Piece, Grid>> pieces = new ArrayList<>();
+        for (char c = 'A'; c <= 'I'; c++) {
+            for (int r = 1; r <= 10; r++) {
+                if (board.contains(c, r) && board.get(c, r).getCamp() == camp) {
+                    pieces.add(new Pair<>(board.get(c, r), new Grid(c, r)));
+                }
+            }
+        }
+        return pieces;
+    }
+
+    // Return a list of grids that the given piece can move to
+    private List<Grid> getPieceMoves(Piece piece, Grid from) {
+        List<Grid> grids = new ArrayList<>();
+        for (char c = 'A'; c <= 'I'; c++) {
+            for (int r = 1; r <= 10; r++) {
+                Grid to = new Grid(c, r);
+                if (validateMove(piece, from, to)) {
+                    grids.add(to);
+                }
+            }
+        }
+        return grids;
     }
 
     private boolean isGridEqual(Grid grid, char col, int row) {

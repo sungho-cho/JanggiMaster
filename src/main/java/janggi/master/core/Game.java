@@ -8,4 +8,8 @@ public class Game {
     private Formation choFormation, hanFormation;
     private List<Move> moves;
 
+
+    public void endGame() {
+        ;
+    }
 }
