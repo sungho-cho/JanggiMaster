@@ -43,16 +43,6 @@ public class Board {
         // Validate the given move
         boolean validated = validateMove(piece, from, to);
 
-        // Must be "Munggun" move to defend "Janggun"
-        if (validated && this.janggun) {
-            Piece previousPiece = board.get(to.getCol(), to.getRow());
-            board.put(to.getCol(), to.getRow(), piece);
-            if (checkJanggun(piece.getCamp(), false) == GameStatus.JANGGUN) {
-                board.put(to.getCol(), to.getRow(), previousPiece);
-                validated = false;
-            }
-        }
-
         if (!validated) {
             return;
         }
@@ -113,7 +103,6 @@ public class Board {
         return status;
     }
 
-    // TO DO: Invalidate if the move puts ally general in danger
     private boolean validateMove(Piece piece, Grid from, Grid to) {
         // Invalidated when "from" or "to" is out of bound
         if (from.getCol() < MIN_COL || from.getCol() > MAX_COL ||
@@ -165,6 +154,18 @@ public class Board {
             case CANNON:
                 validated = validateStraightPieceMove(piece, from, to);
                 break;
+        }
+
+        // Invalidated if it's enemy's "Janggun" immediately
+        if (validated) {
+            Piece previousPiece = board.get(to.getCol(), to.getRow());
+            board.put(to.getCol(), to.getRow(), piece);
+            board.remove(from.getCol(), from.getRow());
+            if (checkJanggun(piece.getCamp(), false) == GameStatus.JANGGUN) {
+                validated = false;
+            }
+            board.put(to.getCol(), to.getRow(), previousPiece);
+            board.put(from.getCol(), from.getRow(), piece);
         }
 
         return validated;
